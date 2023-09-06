@@ -13,7 +13,7 @@
         <div v-for="item in items" :key="item.id" class="checklist-item">
           <label :for="'item-' + item.id" class="checklist-item-label">
 	          <input type="checkbox" v-model="item.checked" :id="'item-' + item.id">
-  	        <span>{{ item.text }}</span>
+  	        <span class="checklist-item-label-text">{{ item.text }}</span>
           </label>
         </div>
       </form>
