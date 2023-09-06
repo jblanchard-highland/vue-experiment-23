@@ -1,13 +1,26 @@
-  const ChecklistApp = {
+const ChecklistApp = {
     data() {
-      return {
+    return {
         items: [
-          { id: 1, text: 'Item 1', checked: false },
-          { id: 2, text: 'Item 2', checked: false },
-          // ... add more items as needed
+            { text: 'Item 1', visible: false },
+            { text: 'Item 2', visible: false },
+            { text: 'Item 3', visible: false },
+            // ... more items
         ]
-      };
-    },
+    };
+},
+mounted() {
+    this.showItemsWithDelay();
+},
+methods: {
+    showItemsWithDelay() {
+        this.items.forEach((item, index) => {
+            setTimeout(() => {
+                item.visible = true;
+            }, index * 500); // 500ms delay between each item
+        });
+    }
+},
     template: `
       <form id="checklist-wrapper">
         <div v-for="item in items" :key="item.id" class="checklist-item">
